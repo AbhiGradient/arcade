@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PIXEL VAULT // ARCADE SYSTEM</title>
+  <meta name="description" content="Pixel Vault is a retro arcade launcher for browser games. Insert coin, select game, break the limit.">
+  <meta name="theme-color" content="#07060d">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#library">Skip to game library</a>
+  <div class="ambient" aria-hidden="true"></div>
+  <div class="particles" id="particles" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="Pixel Vault home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">PIXEL<span>VAULT</span></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="#home" data-nav="home">Home</a></li>
+        <li><a href="#library" data-nav="library">Game Library</a></li>
+        <li><a href="#about" data-nav="about">About</a></li>
+      </ul>
+    </nav>
+
+    <div class="controls">
+      <span class="sys-status" role="status"><span class="dot" aria-hidden="true"></span>SYS ONLINE</span>
+      <button type="button" class="toggle" id="toggleSound" aria-pressed="false" title="Interface sounds">SND <span class="state">OFF</span></button>
+      <button type="button" class="toggle" id="toggleCrt" aria-pressed="true" title="CRT scanline overlay">CRT <span class="state">ON</span></button>
+      <button type="button" class="toggle" id="toggleFx" aria-pressed="true" title="Animated effects">FX <span class="state">ON</span></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <p class="terminal" aria-live="off"><span class="prompt">&gt;</span> SYSTEM READY // PLAYER 01<span class="cursor" aria-hidden="true">_</span></p>
+        <h1 id="heroTitle" class="glitch" data-text="PIXEL VAULT">PIXEL VAULT</h1>
+        <p class="kicker">YOUR NEXT OBSESSION STARTS HERE.</p>
+        <p class="lede">One console. Multiple worlds. Endless replayability.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#arcade">EXPLORE ARCADE</a>
+          <a class="btn btn-ghost" href="#library">VIEW LIBRARY</a>
+        </div>
+        <p class="tagline">INSERT COIN. SELECT GAME. BREAK THE LIMIT.</p>
+      </div>
+
+      <aside class="cabinet" aria-label="Arcade status panel">
+        <div class="cabinet-screen">
+          <div class="cabinet-head"><span>PIXEL VAULT // OS 1.0</span><span class="blink">&#9679; LIVE</span></div>
+          <dl class="readout">
+            <div><dt>GAMES REGISTERED</dt><dd id="heroCount">0</dd></div>
+            <div><dt>READY TO PLAY</dt><dd id="heroReady">0</dd></div>
+            <div><dt>PLAYER</dt><dd>01</dd></div>
+            <div><dt>CREDITS</dt><dd>&#8734;</dd></div>
+          </dl>
+          <div class="pixel-art" aria-hidden="true"></div>
+          <p class="cabinet-foot">PRESS START &#9656; CHOOSE YOUR WORLD</p>
+        </div>
+        <div class="cabinet-deck" aria-hidden="true"><span class="stick"></span><span class="btn-r"></span><span class="btn-g"></span><span class="btn-b"></span></div>
+      </aside>
+    </section>
+
+    <!-- FEATURED -->
+    <section class="section" id="arcade" aria-labelledby="featuredHeading">
+      <header class="section-head">
+        <p class="eyebrow">// NOW SPOTLIGHTED</p>
+        <h2 id="featuredHeading">FEATURED GAME</h2>
+      </header>
+      <div id="featuredMount" class="featured" aria-live="polite"></div>
+    </section>
+
+    <!-- LIBRARY -->
+    <section class="section" id="library" aria-labelledby="libraryHeading">
+      <header class="section-head">
+        <p class="eyebrow">// SELECT GAME</p>
+        <h2 id="libraryHeading">GAME LIBRARY</h2>
+      </header>
+
+      <form class="toolbar" id="toolbar" role="search" aria-label="Filter games" autocomplete="off">
+        <div class="field field-search">
+          <label for="searchInput">SEARCH</label>
+          <input type="search" id="searchInput" placeholder="Title, genre or description  ( / )" spellcheck="false">
+        </div>
+        <div class="field">
+          <label for="genreSelect">GENRE</label>
+          <select id="genreSelect"></select>
+        </div>
+        <div class="field">
+          <label for="sortSelect">SORT</label>
+          <select id="sortSelect">
+            <option value="library">Library order</option>
+            <option value="az">Title A &ndash; Z</option>
+            <option value="za">Title Z &ndash; A</option>
+            <option value="featured">Featured first</option>
+          </select>
+        </div>
+        <button type="button" class="btn btn-ghost btn-small" id="clearFilters">CLEAR FILTERS</button>
+      </form>
+
+      <p class="result-count" id="resultCount" role="status" aria-live="polite"></p>
+      <div class="grid" id="gameGrid"></div>
+      <p class="empty" id="emptyState" hidden>NO GAMES FOUND // ADJUST YOUR SEARCH</p>
+    </section>
+
+    <!-- STATS -->
+    <section class="section" aria-labelledby="statsHeading">
+      <header class="section-head">
+        <p class="eyebrow">// SYSTEM DIAGNOSTICS</p>
+        <h2 id="statsHeading">LIBRARY STATS</h2>
+      </header>
+      <ul class="stats">
+        <li><span class="stat-num" id="statTotal">0</span><span class="stat-label">GAMES REGISTERED</span></li>
+        <li><span class="stat-num" id="statAvailable">0</span><span class="stat-label">AVAILABLE NOW</span></li>
+        <li><span class="stat-num" id="statGenres">0</span><span class="stat-label">GENRES</span></li>
+        <li><span class="stat-num" id="statLaunches">0</span><span class="stat-label">LAUNCHES FROM THIS BROWSER</span></li>
+      </ul>
+      <p class="fineprint">Launch count is stored only in this browser (local storage). It is not a global play count.</p>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about" aria-labelledby="aboutHeading">
+      <header class="section-head">
+        <p class="eyebrow">// MANUAL</p>
+        <h2 id="aboutHeading">ABOUT</h2>
+      </header>
+      <div class="about-grid">
+        <p>Pixel Vault is a static launcher for a collection of browser games. Each game lives in its own folder and runs as its own page, so keyboard, mouse, audio and pointer-lock behave exactly as the game intends.</p>
+        <p>Choose a card, press play, and the game opens in this tab. Use your browser&rsquo;s back button to return to the arcade, or use a return link if the game provides one.</p>
+        <p>Tip: press <kbd>/</kbd> to jump to search. Sound, CRT scanlines and animated effects can each be switched off from the top bar.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <strong>PIXEL VAULT</strong>
+      <span>Insert coin. Select game. Break the limit.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#home">Back to top &uarr;</a></li>
+      <li id="repoItem" hidden><a id="repoLink" href="#" rel="noopener noreferrer" target="_blank">Repository</a></li>
+    </ul>
+    <p class="fineprint" id="footerNote">All games run locally in your browser. Nothing is uploaded.</p>
+    <p class="fineprint" id="copyright"></p>
+    <p class="fineprint warn" id="configWarn" hidden></p>
+  </footer>
+
+  <div class="overlay" id="launchOverlay" role="alertdialog" aria-modal="true" aria-labelledby="launchTitle" hidden>
+    <div class="overlay-box">
+      <p class="eyebrow">LOADING CARTRIDGE</p>
+      <p class="overlay-title" id="launchTitle">&nbsp;</p>
+      <div class="bar" aria-hidden="true"><span></span></div>
+      <button type="button" class="btn btn-ghost btn-small" id="launchCancel">CANCEL</button>
+    </div>
+  </div>
+
+  <noscript><p class="noscript">PIXEL VAULT needs JavaScript to list the games. Enable JavaScript and reload.</p></noscript>
+</body>
+</html>

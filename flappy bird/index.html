@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A fan-made, pixel-art Flappy Bird-style browser game built with HTML5 Canvas and vanilla JavaScript.">
+  <meta name="theme-color" content="#14141f">
+  <title>Flappy Bird — Classic Edition</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1 class="sr-only">Flappy Bird — Classic Edition</h1>
+
+    <div class="stack">
+      <div class="game-frame" id="game-frame">
+        <canvas id="game" width="288" height="512" tabindex="0" role="img"
+                aria-label="Flappy Bird game screen. Press Space to start and flap."></canvas>
+
+        <section class="overlay" id="gameover" aria-labelledby="gameover-title" hidden>
+          <h2 id="gameover-title">GAME OVER</h2>
+          <div class="score-panel">
+            <div>
+              <span>SCORE</span>
+              <strong id="final-score">0</strong>
+            </div>
+            <div>
+              <span>BEST</span>
+              <strong id="final-best">0</strong>
+            </div>
+          </div>
+          <p class="new-best" id="new-best" hidden>NEW BEST!</p>
+          <button type="button" class="btn btn-big" id="restart-btn">RESTART</button>
+          <p class="overlay-hint">or press Space / Enter</p>
+        </section>
+      </div>
+
+      <div class="toolbar">
+        <button type="button" class="btn" id="sound-btn" aria-pressed="true">SOUND: ON</button>
+        <button type="button" class="btn" id="pause-btn" aria-pressed="false" disabled>PAUSE</button>
+        <p class="best-display" aria-live="off">BEST <strong id="best-display">0</strong></p>
+      </div>
+
+      <p class="controls">
+        <kbd>Space</kbd> / <kbd>↑</kbd> flap &middot;
+        <kbd>Enter</kbd> start / restart &middot;
+        <kbd>P</kbd> / <kbd>Esc</kbd> pause
+      </p>
+    </div>
+
+    <p class="sr-only" id="status" role="status" aria-live="polite"></p>
+  </main>
+
+  <footer class="footer">
+    <p>Independently created fan-made browser game inspired by classic Flappy Bird gameplay. Not affiliated with the original creators or rights holders.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
