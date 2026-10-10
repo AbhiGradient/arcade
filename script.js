@@ -23,7 +23,7 @@
 
 const SITE = {
   name: "PIXEL VAULT",
-  repoUrl: "" // e.g. "https://github.com/USERNAME/games"; empty hides the link
+  repoUrl: "" // e.g. "https://github.com/AbhiGradient/games"; empty hides the link
 };
 
 const GAMES = [
@@ -39,11 +39,10 @@ const GAMES = [
     enabled: true,
     cover: ""
   },
-  {
+    {
     id: "hellbreach",
     title: "HELLBREACH",
-    folder: "hellbreach",
-    entry: "index.html",
+    externalUrl: "https://doom-1-0tlz.onrender.com",
     genre: "First-Person Shooter",
     description: "Enter a hostile sci-fi facility, arm yourself, and fight your way through the breach.",
     controls: "Keyboard / Mouse",
@@ -96,7 +95,13 @@ const GAMES = [
     } catch (e) { return null; }
   }
 
-  function gameURL(game) {
+    function gameURL(game) {
+    if (game.externalUrl) {
+      try {
+        const u = new URL(game.externalUrl);
+        return /^https?:$/.test(u.protocol) ? u : null;
+      } catch (e) { return null; }
+    }
     const folder = encodePath(game.folder);
     const entry = encodePath(game.entry || "index.html");
     if (!folder || !entry) return null;
@@ -141,13 +146,14 @@ const GAMES = [
       const title = str(g.title);
       const folder = str(g.folder);
       const entry = str(g.entry) || "index.html";
+      const externalUrl = str(g.externalUrl);
       if (!id) { problems.push(`${where}: missing "id".`); return; }
       if (seen.has(id)) { problems.push(`${where}: duplicate id "${id}" skipped.`); return; }
       if (!title) { problems.push(`${where} (${id}): missing "title".`); return; }
-      if (!folder) { problems.push(`${where} (${id}): missing "folder".`); return; }
+      if (!folder && !externalUrl) { problems.push(`${where} (${id}): needs "folder" or "externalUrl".`); return; }
       seen.add(id);
       const game = {
-        id, title, folder, entry,
+        id, title, folder, entry, externalUrl,
         genre: str(g.genre) || "Uncategorised",
         description: str(g.description) || "No description yet.",
         controls: str(g.controls) || "See game",
