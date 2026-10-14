@@ -37,7 +37,7 @@ const GAMES = [
     controls: "Keyboard / Mouse",
     featured: false,
     enabled: true,
-    cover: ""
+    cover: "assets/covers/flappy.jpg"
   },
     {
     id: "hellbreach",
@@ -48,7 +48,7 @@ const GAMES = [
     controls: "Keyboard / Mouse",
     featured: true,
     enabled: true,
-    cover: ""
+    cover: "assets/covers/doom.jpg"
   },
    {
     id: "mario",
@@ -60,7 +60,7 @@ const GAMES = [
     controls: "Keyboard",
     featured: false,
     enabled: true,
-    cover: ""
+    cover: "assets/covers/mario.jpg"
   }
 ];
 
