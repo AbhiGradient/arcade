@@ -53,7 +53,7 @@ const GAMES = [
    {
     id: "mario",
     title: "SUPER MARIO",
-    folder: "mario",
+    folder: "MARIO",
     entry: "index.html",
     genre: "Platformer / Arcade",
     description: "Jump across platforms, dodge enemies, and explore the world.",
