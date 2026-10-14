@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#5c94fc"><title>MARIO</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css"></head>
+<body>
+<div id="stage"><canvas id="cv"></canvas></div>
+<div id="hud" class="hidden"><span id="hs"></span><span id="hc"></span><span id="hl"></span><span id="hw"></span><span id="ht"></span><span id="hp"></span><button id="pb" data-a="pause" aria-label="Pause">II</button></div>
+<div id="toast" class="hidden"></div><div id="rot" class="hidden">Tip: rotate your phone for a wider view</div>
+<div id="touch"><div class="grp"><button data-k="l" aria-label="Left">&#9664;</button><button data-k="r" aria-label="Right">&#9654;</button></div><button class="jb" data-k="j" aria-label="Jump">JUMP</button></div>
+<section class="screen" id="s-menu"><h1 id="title">MARIO</h1><p>A CLASSIC PLATFORM ADVENTURE</p><canvas id="pv" width="64" height="64"></canvas><p id="best"></p>
+<button class="b" data-a="play">Play</button><button class="b" data-a="levels">Select level</button><button class="b" data-a="help">How to play</button><button class="b" data-a="settings">Settings</button><button class="b" data-a="about">About</button><button class="b" data-a="snd" id="sndb"></button></section>
+<section class="screen hidden" id="s-levels"><h2>Select level</h2><div id="lvl"></div><button class="b" data-a="menu">Back</button></section>
+<section class="screen hidden" id="s-help"><h2>How to play</h2><div class="txt"><p><b>Keyboard:</b> A/D or arrows move, W/Up/Space jump (hold for higher), Esc or P pause, R twice restarts.</p><p><b>Touch:</b> hold the arrow buttons to run, tap JUMP. Multi-touch works.</p><p>Stomp enemies from above. Beetles need two stomps. Spikes and pits hurt.</p><p>Hit ? blocks from below for coins and mushrooms. A mushroom makes you big: you can break bricks and survive one hit. 50 coins = extra life.</p><p>Touch a checkpoint flag to respawn there. Reach the goal flag to win.</p></div><button class="b" data-a="menu">Back</button></section>
+<section class="screen hidden" id="s-set"><h2>Settings</h2><button class="b" data-a="snd" id="sndb2"></button><button class="b" data-a="shk" id="shkb"></button><button class="b" data-a="tch" id="tchb"></button><button class="b" data-a="reset" id="rstb">Reset progress</button><button class="b" data-a="menu">Back</button></section>
+<section class="screen hidden" id="s-about"><h2>About</h2><div class="txt"><p>A Mario-style platformer in plain HTML, CSS and JavaScript. All art and sound are drawn and synthesized in code. No server, no downloads.</p></div><button class="b" data-a="menu">Back</button></section>
+<section class="screen hidden" id="s-pause"><h2>Paused</h2><button class="b" data-a="resume">Resume</button><button class="b" data-a="retry">Restart level</button><button class="b" data-a="menu">Main menu</button></section>
+<section class="screen hidden" id="s-over"><h2>Game over</h2><p id="osum"></p><button class="b" data-a="retry">Try again</button><button class="b" data-a="menu">Main menu</button></section>
+<section class="screen hidden" id="s-win"><h2>Level clear!</h2><div class="txt" id="wsum"></div><button class="b" data-a="next" id="nextb">Next level</button><button class="b" data-a="retry">Replay</button><button class="b" data-a="menu">Main menu</button></section>
+<script src="game.js"></script></body></html>

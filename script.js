@@ -49,6 +49,18 @@ const GAMES = [
     featured: true,
     enabled: true,
     cover: ""
+  },
+   {
+    id: "mario",
+    title: "SUPER MARIO",
+    folder: "mario",
+    entry: "index.html",
+    genre: "Platformer / Arcade",
+    description: "Jump across platforms, dodge enemies, and explore the world.",
+    controls: "Keyboard",
+    featured: false,
+    enabled: true,
+    cover: ""
   }
 ];
 
