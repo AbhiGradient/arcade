@@ -1,0 +1,24 @@
+require('../js/core.js');
+const SS=globalThis.SS,assert=require('assert');
+const keys=['hp','dmg','spd','wsp','aggr','def','react','combo','leech','reward','rating','arena','reach'];
+const bad=[];
+const check=n=>{const c=SS.levelConfig(n);for(const k of keys)if(!Number.isFinite(c[k])||c[k]<0)bad.push([n,k,c[k]]);if(c.hp<40||c.hp>6000||c.dmg>14||c.reward<1)bad.push([n,'range']);return c};
+for(let n=1;n<=200000;n++)check(n);
+for(const n of[1e6,1e7,1e9,Infinity,NaN,-5,0,'x',null,undefined,1.9])check(n);
+assert.deepStrictEqual(bad,[],'invalid configs: '+JSON.stringify(bad.slice(0,3)));
+assert.strictEqual(SS.levelConfig(1).arch,'agile');
+for(let n=10;n<=2000;n+=10)assert(SS.levelConfig(n).boss);
+assert(!SS.levelConfig(11).boss&&!SS.levelConfig(9).boss);
+const avg=(a,b,f)=>{let s=0;for(let n=a;n<b;n++)s+=SS.levelConfig(n)[f];return s/(b-a)};
+assert(avg(100,150,'hp')>avg(1,50,'hp'));assert(avg(100,150,'aggr')>avg(1,50,'aggr'));assert(avg(100,150,'def')>avg(1,50,'def'));assert(avg(100,150,'react')<avg(1,50,'react'));
+const archs=new Set(),mods=new Set();for(let n=1;n<=500;n++){const c=SS.levelConfig(n);archs.add(c.arch);c.mods.forEach(m=>mods.add(m))}
+assert.strictEqual(archs.size,SS.ARCH.length);assert.strictEqual(mods.size,SS.MODS.length);
+assert.deepStrictEqual(SS.levelConfig(777),SS.levelConfig(777));
+const s=SS.sanitize({level:'zz',best:NaN,coins:-9,owned:['x','sword'],weapon:'hax',up:{hp:9999}});
+assert.strictEqual(s.level,1);assert.strictEqual(s.coins,0);assert.strictEqual(s.weapon,'fists');assert.strictEqual(s.up.hp,40);
+for(const v of['junk',null,5,[],{st:5,set:'a'}])SS.sanitize(v);
+assert.strictEqual(SS.importSave('{bad'),null);assert.strictEqual(SS.importSave('{"x":1}'),null);
+assert(SS.importSave(SS.exportSave(SS.defSave())));
+const p=SS.playerStats(SS.sanitize({up:{hp:40,dmg:40,def:40,eng:40},best:1,owned:['hammer'],weapon:'hammer'}));
+assert(Number.isFinite(p.hp)&&p.take>0);
+console.log('progression tests passed: 200000 levels + extreme inputs OK');

@@ -61,6 +61,18 @@ const GAMES = [
     featured: false,
     enabled: true,
     cover: "assets/covers/mario.jpg"
+  },
+  {
+    id: "shadow-strike",
+    title: "SHADOW STRIKE",
+    folder: "shadow-strike",
+    entry: "index.html",
+    genre: "Action / Shooter",
+    description: "Engage in intense firefights and take down enemies in this fast-paced action game.",
+    controls: "Keyboard",
+    featured: false,
+    enabled: true,
+    cover: "assets/covers/shadow.png"
   }
 ];
 

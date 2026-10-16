@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Shadow Strike: Infinite Arena – Free 2D Browser Fighting Game</title>
+<meta name="description" content="Play Shadow Strike: Infinite Arena, a free HTML5 2D shadow-warrior fighting game. Endless levels, boss fights, weapons, upgrades and touch controls. No install needed.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#070914">
+<link rel="canonical" href="https://abhigradient.github.io/arcade/shadow-strike/index.html">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shadow Strike: Infinite Arena – Free Browser Fighting Game">
+<meta property="og:description" content="Endless 2D martial-arts fighting with bosses, weapons and upgrades. Plays on desktop and mobile.">
+<meta property="og:url" content="https://abhigradient.github.io/arcade/shadow-strike/index.html">
+<meta property="og:image" content="https://abhigradient.github.io/arcade/shadow-strike/assets/social-preview.png">
+<meta property="og:image:alt" content="Shadow Strike: Infinite Arena title artwork">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shadow Strike: Infinite Arena">
+<meta name="twitter:description" content="Free endless 2D shadow-warrior fighting game for your browser.">
+<meta name="twitter:image" content="https://abhigradient.github.io/arcade/shadow-strike/assets/social-preview.png">
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"VideoGame","name":"Shadow Strike: Infinite Arena","url":"https://abhigradient.github.io/arcade/shadow-strike/index.html","description":"A free single-player 2D shadow-warrior fighting game for web browsers with endless procedurally generated levels, boss fights, weapons and upgrades.","genre":["Fighting","Action"],"gamePlatform":"Web browser","applicationCategory":"Game","operatingSystem":"Any","inLanguage":"en","isAccessibleForFree":true,"playMode":"SinglePlayer","author":{"@type":"Person","name":"AbhiGradient","url":"https://www.github.com/AbhiGradient/"},"isPartOf":{"@type":"WebSite","name":"Arcade","url":"https://abhigradient.github.io/arcade/"}},{"@type":"WebSite","name":"Arcade","url":"https://abhigradient.github.io/arcade/"}]}</script>
+</head>
+<body>
+<header class="top"><a href="../index.html">← Arcade home</a><strong>Shadow Strike</strong><a href="https://www.github.com/AbhiGradient/" rel="noopener">AbhiGradient on GitHub</a></header>
+<main>
+<h1 class="vh">Shadow Strike: Infinite Arena – free 2D browser fighting game</h1>
+<section id="stage" aria-label="Game">
+<canvas id="cv" width="960" height="540" role="img" aria-label="Fighting game arena. Use the on-screen menu to start."></canvas>
+<button id="pauseBtn" class="pausebtn" type="button" aria-label="Pause">❚❚</button>
+<div id="touch" aria-label="Touch controls">
+<div class="pad"><button class="tb" data-a="left" type="button" aria-label="Move left">◀</button><button class="tb" data-a="right" type="button" aria-label="Move right">▶</button><button class="tb" data-a="jump" type="button" aria-label="Jump">Jump</button></div>
+<div class="pad"><button class="tb" data-a="punch" type="button">Punch</button><button class="tb" data-a="kick" type="button">Kick</button><button class="tb" data-a="heavy" type="button">Heavy</button><button class="tb" data-a="block" type="button">Block</button><button class="tb" data-a="dodge" type="button">Dodge</button><button class="tb sp" data-a="special" type="button">Special</button></div>
+</div>
+<div id="ui"></div>
+</section>
+<noscript><p class="wrap">Shadow Strike needs JavaScript enabled to run.</p></noscript>
+<section class="info wrap">
+<h2>About the game</h2>
+<p>Shadow Strike: Infinite Arena is a free, single-player 2D martial-arts fighting game made with HTML5 Canvas. You play an original shadow warrior, duel one opponent at a time, earn coins and grow stronger. It is an independent project inspired by the genre and is not affiliated with any other fighting game.</p>
+<h2>How to play</h2>
+<p>Press Play and defeat the opponent by landing attacks that actually connect: every strike has a startup, an active hit window and a recovery. Block incoming hits, dodge through danger, and fill your energy bar to unleash a special attack. Win to earn coins, then spend them on weapons and upgrades before the next fight.</p>
+<h2>Desktop controls</h2>
+<p>Move with A/D or the arrow keys, jump with W or Up, hold S, Down or Space to block, punch with J, kick with K, heavy attack with L, dodge with Shift, special with E, pause with Esc.</p>
+<h2>Mobile controls</h2>
+<p>On phones and tablets, on-screen buttons appear for movement, jump, punch, kick, heavy, block, dodge, special and pause. Landscape orientation is recommended.</p>
+<h2>Weapons and combat</h2>
+<p>Choose fists, sword, dual blades, staff, spear or war hammer. Each weapon changes damage, reach and attack speed. Upgrade vitality, power, defense and focus to keep up with tougher enemies.</p>
+<h2>Endless progression</h2>
+<p>There is no final level. Every level is generated by a formula, so enemies keep gaining health, damage, speed, aggression and defense within safe limits, while new fighter types and combat modifiers combine over time. A boss appears every ten levels.</p>
+<h2>Frequently asked questions</h2>
+<details><summary>Is Shadow Strike free?</summary><p>Yes. It runs in your browser with no account, ads, tracking or purchases.</p></details>
+<details><summary>Is my progress saved?</summary><p>Progress is saved in your browser's local storage on this device. Clearing site data erases it, and you can export a backup from Settings.</p></details>
+<details><summary>Can I play offline?</summary><p>Yes, once the game files are on your device. You can also open index.html directly from a downloaded folder.</p></details>
+<p><a href="../index.html">Browse more games in the arcade</a></p>
+</section>
+</main>
+<footer class="wrap"><small>Shadow Strike: Infinite Arena by <a href="https://www.github.com/AbhiGradient/" rel="noopener">AbhiGradient</a>. All visuals and sounds are generated in code.</small></footer>
+<script src="js/core.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
